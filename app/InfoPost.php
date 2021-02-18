@@ -10,4 +10,6 @@ class InfoPost extends Model
     public function post() {
         return $this->belongsTo('App\Post');
     }
+
+    public $timestamps = false;
 }

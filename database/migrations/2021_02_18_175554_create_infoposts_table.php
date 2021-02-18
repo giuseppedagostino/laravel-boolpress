@@ -15,9 +15,16 @@ class CreateInfopostsTable extends Migration
     {
         Schema::create('infoposts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            // creo la colonna BigInteger
+            $table->unsignedBigInteger('post_id');
+            $table->string('post_status', 7);
+            $table->string('comment_status', 7);
+            // $table->timestamps();
 
-            // RELAZIONI
+            // e assegno la relazione
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts');
         });
     }
 
