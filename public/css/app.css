@@ -10,6 +10,12 @@ main {
   padding: 50px;
   background-color: lightgrey;
 }
+main h1 {
+  margin-bottom: 25px;
+}
+main p {
+  font-size: 16px;
+}
 
 header {
   padding: 25px;
