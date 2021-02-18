@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// rotte gestite dal PostController
+Route::resource('posts', 'PostController');
