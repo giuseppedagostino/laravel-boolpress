@@ -2,5 +2,12 @@
 
 @section('content')
     <h1>Pagina Index di Posts</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui ab inventore impedit quidem ea libero voluptatibus possimus quis mollitia pariatur nulla voluptatum aliquam quibusdam natus deserunt enim, laboriosam excepturi. Quos rem similique sed illo iste distinctio id fuga perspiciatis velit? Non nostrum, illum sequi sunt libero minima numquam facilis voluptatibus optio consectetur id. Odit omnis at facere minima porro nemo rem, ullam suscipit maxime dolorem, sed dolor asperiores aut eligendi sit laboriosam et itaque sequi. Repellendus iste, optio repudiandae nobis consequatur deleniti a ipsum odio repellat cumque suscipit et magnam perferendis atque officia sit fugit voluptatum neque odit. At reprehenderit illo aperiam maxime voluptatibus minima officia a dolore consequuntur sed, aspernatur officiis consequatur, architecto blanditiis suscipit nihil pariatur ducimus temporibus natus exercitationem culpa eos omnis? Necessitatibus impedit veniam distinctio voluptatum iste, consequatur praesentium quae quo dicta exercitationem labore dolore, eius reiciendis ipsam similique id! Pariatur, dolorum consequatur repellat consequuntur ex quidem eaque similique quae placeat expedita excepturi libero, distinctio dolores ad? A ullam eos repudiandae fugiat, ipsa perferendis earum voluptas. Officia facilis natus sunt numquam nostrum dolore dicta quibusdam? Sit magnam aperiam, vitae beatae nemo officia eligendi sed alias, mollitia expedita voluptas animi eveniet sequi necessitatibus cum cupiditate assumenda illo repellendus nostrum deleniti. Quos nihil veritatis sunt hic aspernatur dolores, nemo rerum qui maxime quidem fuga sapiente! Ullam placeat illo cumque quos ut minima veniam officia, asperiores sed rem et? Aperiam recusandae facere omnis illo inventore distinctio pariatur sunt? Praesentium animi voluptatem sequi, provident inventore eum soluta beatae explicabo repellendus fugiat natus repudiandae eveniet, cupiditate officia.</p>
+    @foreach ($posts as $post)
+        <p>{{ $post->title }}</p>
+        <p>{{ $post->subtitle }}</p>
+        <p>{{ $post->author }}</p>
+        <p>{{ $post->content }}</p>
+        <p>{{ $post->publication_date }}</p>
+        <hr>
+    @endforeach
 @endsection
