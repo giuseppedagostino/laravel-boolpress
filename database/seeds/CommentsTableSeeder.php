@@ -12,7 +12,7 @@ class CommentsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $posts = Post::all();
 
@@ -22,13 +22,13 @@ class CommentsTableSeeder extends Seeder
 
                 $newComment = new Comment();
 
-                $newInfoPost->post_id = $post->id;
+                $newComment->post_id = $post->id;
                 $newComment->author = $faker->name();
-                $newComment->comment_text = $faker->text(150);
-                $newComment->created_at = dateTime();
-                $newComment->updated_at= dateTime();
+                $newComment->comment_content = $faker->text(150);
+                $newComment->created_at = $faker->dateTime();
+                $newComment->updated_at= $faker->dateTime();
 
-                $newInfoPost->save();
+                $newComment->save();
                 
             }
             

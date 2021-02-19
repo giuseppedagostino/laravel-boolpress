@@ -13,7 +13,7 @@ class CreateInfopostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('infoposts', function (Blueprint $table) {
+        Schema::create('info_posts', function (Blueprint $table) {
             $table->id();
             // creo la colonna BigInteger
             $table->unsignedBigInteger('post_id');
@@ -35,6 +35,6 @@ class CreateInfopostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infoposts');
+        Schema::dropIfExists('info_posts');
     }
 }
