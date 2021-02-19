@@ -2,12 +2,19 @@
 
 @section('content')
     <h1>Pagina Index di Posts</h1>
-    @foreach ($posts as $post)
-        <p>{{ $post->title }}</p>
-        <p>{{ $post->subtitle }}</p>
-        <p>{{ $post->author }}</p>
-        <p>{{ $post->content }}</p>
-        <p>{{ $post->publication_date }}</p>
-        <hr>
-    @endforeach
+
+    <div class="container">
+
+        @foreach ($posts as $post)
+            <div class="post">
+                <p><strong>Titolo: </strong>{{ $post->title }}</p>
+                <p><strong>Sottotitolo: </strong>{{ $post->subtitle }}</p>
+                <p><strong>Autore: </strong>{{ $post->author }}</p>
+                <p><strong>Contenuto: </strong>{{ substr($post->content, 0, 100) . " ..." }}</p>
+                <p><strong>Pubblicazione: </strong>{{ $post->publication_date }}</p>
+            </div>
+        @endforeach
+
+    </div>
+   
 @endsection

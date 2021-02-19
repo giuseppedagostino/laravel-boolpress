@@ -13,8 +13,25 @@ main {
 main h1 {
   margin-bottom: 25px;
 }
-main p {
-  margin-bottom: 10px;
+main .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+main .container .post {
+  margin: 10px;
+  padding: 25px;
+  width: calc(100% / 4 - 20px);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  transition: 0.4s;
+}
+main .container .post:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+main .container .post p {
+  margin-bottom: 5px;
   font-size: 16px;
 }
 
