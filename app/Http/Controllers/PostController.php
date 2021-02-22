@@ -7,6 +7,14 @@ use App\Post;
 
 class PostController extends Controller
 {
+    // Array di validazione
+    private $postValidation = [
+        'title' => 'required|max:50',
+        'subtitle' => 'required|max:100',
+        'author' => 'required|max:60',
+        'content' => 'required',
+        'publication_date' => 'required|date',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +47,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        // effettuo un controllo sui dati inseriti
+        $request->validate($this->postValidation);
+
+        // creo un nuovo oggetto di classe post
+        $newPost = new Post();
+        // associo i dati presi dal form alle chiavi del database
+        $newPost->title = $data["title"];
+        $newPost->subtitle = $data["subtitle"];
+        $newPost->author = $data["author"];
+        $newPost->content = $data["content"];
+        $newPost->publication_date = $data["publication_date"];
+        // salvo il nuovo post
+        $newPost->save();
+
+        return redirect()->route('posts.index')->with('message', 'Post aggiunto correttamente');
     }
 
     /**
@@ -48,15 +72,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($id);
-
-        // se quell'id non esiste restituisco 404 piuttosto che l'errore
-        if(empty($post)) {
-            abort('404');
-        }
-
         return view('posts.show', compact('post'));
     }
 

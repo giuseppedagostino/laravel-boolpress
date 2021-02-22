@@ -30,12 +30,12 @@
     <label for="publication_date">Data di pubblicazione</label>
     <input type="text" name="publication_date" placeholder="Data di pubblicazione" value="{{ old('publication_date') }}">
 
+    <button type="submit" class="button">Salva</button>
+
     </form>
   </div>
 
   <hr>
-
-  <button type="submit" class="button">Salva</button>
 
   <div class="buttons">
     <a href="{{ route('posts.index') }}">
