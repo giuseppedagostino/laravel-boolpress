@@ -3,6 +3,12 @@
 @section('content')
     <h1>Pagina Index di Posts</h1>
 
+    @if (session('message'))
+        <div class="alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <div class="container">
 
         @foreach ($posts as $post)
@@ -19,6 +25,12 @@
                         Leggi di più
                     </a>
                 </div>
+                {{-- posts.destroy --}}
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="button">Elimina</button>
+                  </form>
             </div>
         @endforeach
 
