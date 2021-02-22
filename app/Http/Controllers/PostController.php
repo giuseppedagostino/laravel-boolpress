@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -50,7 +50,14 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        // se quell'id non esiste restituisco 404 piuttosto che l'errore
+        if(empty($post)) {
+            abort('404');
+        }
+
+        return view('posts.show', compact('post'));
     }
 
     /**

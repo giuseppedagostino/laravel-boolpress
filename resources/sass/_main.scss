@@ -4,6 +4,9 @@ main {
   h1 {
     margin-bottom: 25px;
   }
+  h3:last-child {
+    margin-top: 25px;
+  }
   .container {
     display: flex;
     flex-wrap: wrap;
