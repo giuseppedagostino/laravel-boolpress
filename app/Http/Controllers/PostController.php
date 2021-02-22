@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Post;
 use App\InfoPost;
 use App\Comment;
@@ -40,6 +41,7 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
+        // dd($tags);
         return view('posts.create', compact('tags'));
     }
 
@@ -58,8 +60,10 @@ class PostController extends Controller
 
         // creo un nuovo oggetto di classe post
         $newPost = new Post();
+        $data['slug'] = Str::slug($request->title);
         // associo i dati presi dal form alle chiavi del database
         $newPost->title = $data["title"];
+        $newPost->slug = $data["slug"];
         $newPost->subtitle = $data["subtitle"];
         $newPost->author = $data["author"];
         $newPost->content = $data["content"];

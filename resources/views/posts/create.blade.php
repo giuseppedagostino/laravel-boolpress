@@ -48,14 +48,31 @@
       <input type="text" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
     </div>
 
-    {{-- INSERIRE STATO COMMENTI --}}
+    {{-- STATO POST --}}
+    <div class="form-group">
+      <label for="post_status">Stato del post</label>
+      <select class="form-control" id="post_status" name="post_status">
+        <option value="private" {{ (old('post_status') == 'private') ? 'selected' : '' }}>Privato</option>                  
+        <option value="public" {{ (old('post_status') == 'public') ? 'selected' : '' }}>Pubblico</option>                  
+        <option value="draft" {{ (old('post_status') == 'draft') ? 'selected' : '' }}>Bozza</option>                  
+      </select>
+   </div>
 
+    {{-- STATO COMMENTI --}}
+    <div class="form-group">
+      <label for="comment_status">Stato del commento</label>
+      <select class="form-control" id="comment_status" name="comment_status">
+          <option value="private" {{ (old('comment_status') == 'private') ? 'selected' : '' }}>Privato</option>                  
+          <option value="open" {{ (old('comment_status') == 'open') ? 'selected' : '' }}>Aperto</option>                  
+          <option value="closed" {{ (old('comment_status') == 'closed') ? 'selected' : '' }}>Chiuso</option>                  
+      </select>
+    </div>
+
+    <h3 class="mt-3">Tags</h3>
     @foreach ($tags as $tag)
-      <div class="form-group">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="tag-{{ $tag->id }}" value="">
-          <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
-        </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="tag-{{$tag->id}}" value="{{$tag->id}}" name="tags[]">
+        <label class="custom-control-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
       </div>
     @endforeach
 

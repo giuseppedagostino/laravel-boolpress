@@ -16,6 +16,8 @@
 
   <h3><?php echo $post->author . " - " . $post->publication_date; ?></h3>
 
+  <p></p>
+
   <div class="buttons">
     <a href="{{ route('posts.index') }}">
       Torna alla home
