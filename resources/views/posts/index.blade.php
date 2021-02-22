@@ -21,7 +21,7 @@
 
                 {{-- posts.show --}}
                 <div class="buttons">
-                    <a href="{{ route('posts.show', $post->id) }}">
+                    <a href="{{ route('posts.show', $post->slug) }}">
                         Leggi di più
                     </a>
                 </div>
