@@ -87,12 +87,16 @@ main .form label {
   margin-bottom: 10px;
 }
 main .form input {
+  width: 50%;
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 15px;
+}
+main .form input .content {
+  height: 200px;
 }
 main .form input:focus {
   outline: none;

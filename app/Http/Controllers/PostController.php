@@ -93,6 +93,6 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('beers.index')->with('message', 'Post eliminato correttamente');
+        return redirect()->route('posts.index')->with('message', 'Post eliminato correttamente');
     }
 }

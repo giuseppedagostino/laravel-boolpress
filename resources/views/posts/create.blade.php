@@ -8,6 +8,7 @@
     <form action="{{ route('posts.store') }}" method="POST">
     @csrf
     @method('POST')
+    <hr>
 
     {{-- titolo --}}
     <label for="title">Titolo</label>
@@ -23,7 +24,7 @@
 
     {{-- contenuto --}}
     <label for="content">Contenuto</label>
-    <input type="text" name="content" placeholder="Contenuto" value="{{ old('content') }}">
+    <input class="content" type="text" name="content" placeholder="Contenuto" value="{{ old('content') }}">
 
     {{-- data di pubblicazione --}}
     <label for="publication_date">Data di pubblicazione</label>
@@ -31,6 +32,10 @@
 
     </form>
   </div>
+
+  <hr>
+
+  <button type="submit" class="button">Salva</button>
 
   <div class="buttons">
     <a href="{{ route('posts.index') }}">

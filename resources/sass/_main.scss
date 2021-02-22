@@ -36,12 +36,16 @@ main {
       margin-bottom: 10px;
     }
     input {
+      width: 50%;
       display: block;
       margin-top: 10px;
       margin-bottom: 10px;
       padding: 10px;
       border: 1px solid black;
       border-radius: 15px;
+      .content {
+        height: 200px;
+      }
       &:focus {
         outline: none;
       }
