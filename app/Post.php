@@ -23,4 +23,6 @@ class Post extends Model
     public function comments() {
         return $this->hasOne('App\Comment');
     }
+
+    // relazione many-to-many con il model tag
 }
