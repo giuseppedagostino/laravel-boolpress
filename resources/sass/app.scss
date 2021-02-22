@@ -1,9 +1,14 @@
-// font
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// i miei file di stile
-@import 'common.scss';
-@import 'variables.scss';
-@import 'main.scss';
-@import 'header.scss';
-@import 'footer.scss';
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// i miei file css
+@import 'common';
+@import 'main';
+@import 'header';
+@import 'footer';

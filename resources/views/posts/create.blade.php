@@ -5,52 +5,64 @@
   <h1>Pagina Create di posts</h1>
 
   @if ($errors->any())
-      <div class="alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
   @endif
 
-  <div class="form">
-    <form action="{{ route('posts.store') }}" method="POST">
+  <form action="{{ route('posts.store') }}" method="POST">
     @csrf
     @method('POST')
-    <hr>
 
     {{-- titolo --}}
-    <label for="title">Titolo</label>
-    <input type="text" name="title" placeholder="Titolo" value="{{ old('title') }}">
+    <div class="form-group">
+      <label for="title">Titolo</label>
+      <input type="text" class="form-control" id="title" value="{{ old('title') }}" name="title"  placeholder="Inserisci titolo">
+    </div>
 
     {{-- sottotitolo --}}
-    <label for="subtitle">Sottotitolo</label>
-    <input type="text" name="subtitle" placeholder="Sottotitolo" value="{{ old('subtitle') }}">
+    <div class="form-group">
+      <label for="subtitle">Sottotitolo</label>
+      <input type="text" class="form-control" id="subtitle" value="{{ old('subtitle') }}" name="subtitle"  placeholder="Inserisci sottotitolo">
+    </div>
 
     {{-- autore --}}
-    <label for="author">Autore</label>
-    <input type="text" name="author" placeholder="Autore" value="{{ old('author') }}">
+    <div class="form-group">
+      <label for="author">Autore</label>
+      <input type="text" class="form-control" id="author" value="{{ old('author') }}" name="author"  placeholder="Inserisci autore">
+    </div>
 
     {{-- contenuto --}}
-    <label for="content">Contenuto</label>
-    <input class="content" type="text" name="content" placeholder="Contenuto" value="{{ old('content') }}">
+    <div class="form-group">
+      <label for="content">Contenuto</label>
+      <input type="text" class="form-control" id="content" value="{{ old('content') }}" name="content"  placeholder="Inserisci contenuto">
+    </div>
 
     {{-- data di pubblicazione --}}
-    <label for="publication_date">Data di pubblicazione</label>
-    <input type="text" name="publication_date" placeholder="Data di pubblicazione" value="{{ old('publication_date') }}">
+    <div class="form-group">
+      <label for="publication_date">Data di pubblicazione</label>
+      <input type="text" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
+    </div>
 
-    <button type="submit" class="button">Salva</button>
+    {{-- INSERIRE STATO COMMENTI --}}
 
-    </form>
-  </div>
+    @foreach ($tags as $tag)
+      <div class="form-group">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="tag-{{ $tag->id }}" value="">
+          <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+        </div>
+      </div>
+    @endforeach
 
-  <hr>
+    <button type="submit" class="btn btn-lg btn-success mt-3">Salva</button>
 
-  <div class="buttons">
-    <a href="{{ route('posts.index') }}">
-      Torna alla home
-    </a>
-  </div>
+  </form>
+
+  <a href="{{ route('posts.index') }}" class="btn btn-lg btn-secondary">Torna alla home</a>
     
 @endsection
