@@ -25,6 +25,12 @@
                         Leggi di più
                     </a>
                 </div>
+                {{-- posts.edit --}}
+                <div class="buttons">
+                    <a href="{{ route('posts.edit', $post->id) }}">
+                        Modifica
+                    </a>
+                </div>
                 {{-- posts.destroy --}}
                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                     @csrf

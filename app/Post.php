@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    public $fillable = [
+        'title',
+        'subtitle',
+        'author',
+        'content',
+        'publication_date',
+    ];
+
     // relazione one-to-one con il model InfoPost
     public function infoPost() {
         return $this->hasOne('App\InfoPost');

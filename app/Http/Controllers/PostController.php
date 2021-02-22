@@ -83,9 +83,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -95,9 +95,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $request->validate($this->postValidation);
+        $post->update($data);
+
+        return redirect()->route('posts.index')->with('message', 'Caratteristiche post aggiornate correttamente');
     }
 
     /**
