@@ -19,36 +19,34 @@
                 <p><strong>Contenuto: </strong>{{ substr($post->content, 0, 100) . " ..." }}</p>
                 <p><strong>Pubblicazione: </strong>{{ $post->publication_date }}</p>
 
+                {{-- stampo i tag --}}
+                {{-- <h3>Tags</h3>
+                @foreach ($tags as $tag)
+                    <p>{{ $tag->name }}</p>
+                @endforeach --}}
+
                 {{-- posts.show --}}
-                <div class="buttons">
-                    <a href="{{ route('posts.show', $post->slug) }}">
-                        Leggi di più
-                    </a>
-                </div>
+                <a href="{{ route('posts.show', $post->slug) }}" class="btn btn-primary">
+                    Leggi di più
+                </a>
                 {{-- posts.edit --}}
-                <div class="buttons">
-                    <a href="{{ route('posts.edit', $post->id) }}">
-                        Modifica
-                    </a>
-                </div>
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary">
+                    Modifica
+                </a>
                 {{-- posts.destroy --}}
                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="button">Elimina</button>
+                    <button class="btn btn-danger">Elimina</button>
                   </form>
             </div>
         @endforeach
 
     </div>
-
-    {{-- pulsanti --}}
-
-    <div class="buttons">
-        {{-- create --}}
-        <a href="{{ route('posts.create') }}" class="button">
-            Crea un nuovo post
-        </a>
-    </div>
+   
+    {{-- create --}}
+    <a href="{{ route('posts.create') }}" class="btn btn-primary">
+        Crea un nuovo post
+    </a>
 
 @endsection

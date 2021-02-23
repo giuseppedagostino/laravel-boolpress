@@ -49,30 +49,44 @@
     </div>
 
     {{-- STATO POST --}}
-    <div class="form-group">
+    {{-- <div class="form-group">
       <label for="post_status">Stato del post</label>
       <select class="form-control" id="post_status" name="post_status">
         <option value="private" {{ (old('post_status') == 'private') ? 'selected' : '' }}>Privato</option>                  
         <option value="public" {{ (old('post_status') == 'public') ? 'selected' : '' }}>Pubblico</option>                  
         <option value="draft" {{ (old('post_status') == 'draft') ? 'selected' : '' }}>Bozza</option>                  
       </select>
-   </div>
+   </div> --}}
 
     {{-- STATO COMMENTI --}}
-    <div class="form-group">
+    {{-- <div class="form-group">
       <label for="comment_status">Stato del commento</label>
       <select class="form-control" id="comment_status" name="comment_status">
           <option value="private" {{ (old('comment_status') == 'private') ? 'selected' : '' }}>Privato</option>                  
           <option value="open" {{ (old('comment_status') == 'open') ? 'selected' : '' }}>Aperto</option>                  
           <option value="closed" {{ (old('comment_status') == 'closed') ? 'selected' : '' }}>Chiuso</option>                  
       </select>
-    </div>
+    </div> --}}
 
+    {{-- TAGS --}}
     <h3 class="mt-3">Tags</h3>
     @foreach ($tags as $tag)
       <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="tag-{{$tag->id}}" value="{{$tag->id}}" name="tags[]">
         <label class="custom-control-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
+      </div>
+    @endforeach
+
+    {{-- IMAGES --}}
+    <h3>Images</h3>
+    @foreach ($images as $image)
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="image-{{$image->id}}" value="{{$image->id}}" name="images[]">
+        {{-- il for della label è collegato al name dell'input --}}
+        <label class="custom-control-label" for="image-{{$image->id}}">{{$image->alt}}</label>
+        {{-- piccola miniatura dell'immagine --}}
+        <img src="{{ $image->link }}" alt="{{ $image->alt }}" style="width: 100px">
+        {{-- LE IMMAGINI ANCORA NON SI VEDONO PERCHE' VA CORRETTO IL FUNZIONAMENTO DEL FAKER --}}
       </div>
     @endforeach
 

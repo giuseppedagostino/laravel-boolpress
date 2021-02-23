@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             PostsTableSeeder::class,
             InfopostsTableSeeder::class,
             CommentsTableSeeder::class,
+            TagsTableSeeder::class,
+            ImagesTableSeeder::class
         ]);
     }
 }

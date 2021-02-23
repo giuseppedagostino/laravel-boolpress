@@ -29,4 +29,9 @@ class Post extends Model
     public function tags() {
         return $this->belongsToMany('App\Tag');
     }
+
+    // relazione many-to-many con il model image
+    public function imafes() {
+        return $this->belongsToMany('App\Image');
+    }
 }

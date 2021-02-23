@@ -10011,44 +10011,6 @@ h3 {
   font-family: "Nunito", sans-serif;
 }
 
-.buttons {
-  margin-top: 25px;
-  display: flex;
-}
-
-.button {
-  margin-top: 10px;
-  padding: 15px;
-  border: 1px solid black;
-  border-radius: 15px;
-  background-color: white;
-  transition: 0.2s;
-}
-.button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
-.button:focus {
-  outline: none;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-  padding: 15px;
-  border: 1px solid black;
-  border-radius: 15px;
-  background-color: white;
-  transition: 0.2s;
-}
-a:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
-a:focus {
-  outline: none;
-}
-
 main {
   padding: 50px;
   background-color: lightgrey;

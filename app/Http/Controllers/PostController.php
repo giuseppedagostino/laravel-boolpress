@@ -8,6 +8,7 @@ use App\Post;
 use App\InfoPost;
 use App\Comment;
 use App\Tag;
+use App\Image;
 
 class PostController extends Controller
 {
@@ -27,10 +28,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-
+        $tags = Tag::all();
         // dd($posts);
-
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'tags'));
     }
 
     /**
@@ -41,8 +41,9 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        // dd($tags);
-        return view('posts.create', compact('tags'));
+        $images = Image::all();
+        // dd($images);
+        return view('posts.create', compact('tags', 'images'));
     }
 
     /**
@@ -69,7 +70,12 @@ class PostController extends Controller
         $newPost->content = $data["content"];
         $newPost->publication_date = $data["publication_date"];
         // salvo il nuovo post
-        $newPost->save();
+        $postSaveResult = $newPost->save();
+
+        // quando ho salvato un post e ho almeno un tag definito farò l'attach
+        if($postSaveResult && !empty($data['tags'])) {
+             $newPost->tags()->attach($data['tags']);
+        }
 
         return redirect()->route('posts.index')->with('message', 'Post aggiunto correttamente');
     }
@@ -94,7 +100,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $tags = Tag::all();
+        $images = Image::all();
+        return view('posts.edit', compact('post', 'tags', 'images'));
     }
 
     /**
